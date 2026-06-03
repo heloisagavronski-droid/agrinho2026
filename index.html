@@ -2,248 +2,93 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projeto Agrinho 2026: Explorando o equilíbrio essencial entre a produção agrícola e a preservação do meio ambiente.">
-    <title>Agrinho 2026 | Agro Forte, Futuro Sustentável</title>
-    
-    <!-- Importação de Fonte Moderna do Google Fonts -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="family">
-
-    <style>
-        /* --- VARIÁVEIS DE CORES E DESIGN --- */
-        :root {
-            --cor-primaria: #1b4d3e;      /* Verde floresta fechado */
-            --cor-secundaria: #2e7d32;    /* Verde folha vibrante */
-            --cor-detalhe: #d4a373;       /* Tom terra/marrom suave */
-            --cor-fundo: #f8f9fa;         /* Off-white para descanso visual */
-            --cor-card: #ffffff;          /* Branco puro para os blocos */
-            --cor-texto: #2b2d42;         /* Cinza escuro para leitura confortável */
-            --fonte-principal: 'Plus Jakarta Sans', sans-serif;
-            --sombra-suave: 0 8px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        /* --- CONFIGURAÇÕES GERAIS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--fonte-principal);
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            line-height: 1.6;
-        }
-
-        /* --- CABEÇALHO (HERO) --- */
-        header {
-            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
-            color: white;
-            padding: 80px 20px 40px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--cor-detalhe);
-        }
-
-        .header-container h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-
-        .header-container p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-            opacity: 0.9;
-        }
-
-        /* --- MENU DE NAVEGAÇÃO --- */
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 50px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--cor-detalhe);
-        }
-
-        /* --- CONTEÚDO PRINCIPAL --- */
-        main {
-            max-width: 1100px;
-            margin: 60px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-            gap: 30px;
-        }
-
-        /* --- CARDS DAS SEÇÕES --- */
-        section {
-            background-color: var(--cor-card);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--sombra-suave);
-            border-top: 4px solid var(--cor-secundaria);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        /* Destaque sutil ao passar o mouse */
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Altera a cor da borda de duas seções específicas para quebrar a monotonia */
-        #introducao, #sustentabilidade {
-            border-top-color: var(--cor-detalhe);
-        }
-
-        section h2 {
-            color: var(--cor-primaria);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        section p {
-            color: var(--cor-texto);
-            opacity: 0.85;
-            margin-bottom: 15px;
-        }
-
-        section p:last-child {
-            margin-bottom: 0;
-        }
-
-        strong {
-            color: var(--cor-secundaria);
-        }
-
-        /* --- RODAPÉ --- */
-        footer {
-            background-color: var(--cor-primaria);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: var(--cor-detalhe);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- ADAPTAÇÃO PARA CELULARES (RESPONSIVIDADE) --- */
-        @media (max-width: 768px) {
-            main {
-                grid-template-columns: 1fr;
-                margin: 30px auto;
-            }
-            .header-container h1 {
-                font-size: 2rem;
-            }
-            header {
-                padding: 50px 20px 30px 20px;
-            }
-            section {
-                padding: 25px;
-            }
-        }
-    </style>
+    <title>Família Folha Curitiba</title>
 </head>
 <body>
 
-    <header role="banner">
-        <div class="header-container">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>O equilíbrio essencial entre a produção agrícola e a preservação do meio ambiente.</p>
-        </div>
-        <nav aria-label="Navegação principal">
-            <ul>
-                <li><a href="#introducao">Início</a></li>
-                <li><a href="#producao">Produção Eficiente</a></li>
-                <li><a href="#sustentabilidade">Meio Ambiente</a></li>
-                <li><a href="#tecnologia">Inovação Tecnológica</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h1>Família Folha Curitiba</h1>
 
-    <main id="conteudo-principal">
-        
-        <section id="introducao" aria-labelledby="titulo-introducao">
-            <h2 id="titulo-introducao">Equilíbrio para o Amanhã</h2>
-            <article>
-                <p>O projeto <strong>Agrinho 2026</strong> convida à reflexão sobre como a tecnologia e as boas práticas no campo garantem alimento na mesa e florestas em pé.</p>
-            </article>
-        </section>
+    <h2>Agro forte, futuro sustentável</h2>
 
-        <section id="producao" aria-labelledby="titulo-producao">
-            <h2 id="titulo-producao">Produção Consciente</h2>
-            <article>
-                <p>A agricultura moderna utiliza recursos de forma inteligente, aumentando a produtividade sem expandir desenfreadamente as áreas de cultivo.</p>
-                <p>O uso de bioinsumos e o manejo integrado de pragas reduzem os impactos químicos no solo.</p>
-            </article>
-        </section>
+    <p>
+        O agronegócio é uma atividade importante para a economia, pois produz alimentos,
+        gera empregos e contribui para o desenvolvimento do país. No entanto, é necessário
+        que esse crescimento aconteça de forma responsável, respeitando os recursos naturais.
+    </p>
 
-        <section id="sustentabilidade" aria-labelledby="titulo-sustentabilidade">
-            <h2 id="titulo-sustentabilidade">Preservação Ambiental</h2>
-            <article>
-                <p>Práticas como o plantio direto, rotação de culturas e a conservação de nascentes protegem a nossa biodiversidade.</p>
-            </article>
-        </section>
+    <h2>Produção Agrícola</h2>
 
-        <section id="tecnologia" aria-labelledby="titulo-tecnologia">
-            <h2 id="titulo-tecnologia">Inovação e Tecnologia</h2>
-            <article>
-                <p>Drones, sensores inteligentes e inteligência artificial ajudam o produtor a economizar água e aplicar fertilizantes com precisão cirúrgica.</p>
-            </article>
-        </section>
+    <h3>Agricultura de Precisão</h3>
+    <p>
+        A agricultura de precisão utiliza tecnologias como GPS e sensores para acompanhar
+        o desenvolvimento das plantações.
+    </p>
 
-    </main>
+    <h3>Drones Agrícolas</h3>
+    <p>
+        Os drones auxiliam no monitoramento das lavouras, identificando problemas e
+        facilitando o controle das plantações.
+    </p>
 
-    <footer>
-        <p>&copy; 2026 Projeto Agrinho. Todos os direitos reservados.</p>
-        <p><a href="#conteudo-principal">Voltar ao topo</a></p>
-    </footer>
+    <h3>Energia Renovável</h3>
+    <p>
+        A utilização de energia solar ajuda a reduzir os impactos ambientais e promove
+        uma produção mais sustentável.
+    </p>
+
+    <h2>Sustentabilidade</h2>
+
+    <h3>Conservação do Solo</h3>
+    <p>
+        A conservação do solo evita erosões e preserva os nutrientes necessários para
+        a produção agrícola.
+    </p>
+
+    <h3>Irrigação Inteligente</h3>
+    <p>
+        Sistemas inteligentes ajudam a economizar água e melhorar a eficiência da irrigação.
+    </p>
+
+    <h3>Redução de Carbono</h3>
+    <p>
+        O uso de tecnologias sustentáveis contribui para diminuir os impactos ambientais.
+    </p>
+
+    <h2>Calculadora Sustentável</h2>
+
+    <p>
+        O usuário informa quantos litros de água economiza por dia e o sistema calcula
+        a economia mensal.
+    </p>
+
+    <h2>Quiz Sustentável</h2>
+
+    <p><strong>Pergunta:</strong> Qual tecnologia ajuda no monitoramento das plantações?</p>
+
+    <ul>
+        <li>Queimadas</li>
+        <li>Drones Agrícolas</li>
+        <li>Desmatamento</li>
+    </ul>
+
+    <p><strong>Resposta correta:</strong> Drones Agrícolas.</p>
+
+    <h2>Contato</h2>
+
+    <p>Nome:</p>
+    <p>Email:</p>
+    <p>Mensagem:</p>
+
+    <h2>Conclusão</h2>
+
+    <p>
+        O crescimento do agronegócio pode acontecer de forma sustentável por meio da
+        tecnologia, da inovação e da preservação ambiental.
+    </p>
+
+    <hr>
+
+    <p>© 2026 Família Folha Curitiba – Agro Sustentável</p>
 
 </body>
 </html>
-
-
-
-
