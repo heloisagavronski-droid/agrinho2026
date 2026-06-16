@@ -1,64 +1,152 @@
-// Aguarda o HTML carregar completamente
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. LÓGICA DA CALCULADORA SUSTENTÁVEL ---
+    // ==========================================
+    // 1. CALCULADORA SUSTENTÁVEL (COM HISTÓRICO)
+    // ==========================================
     const btnCalcular = document.getElementById("btnCalcular");
     const inputLitros = document.getElementById("litrosAgua");
     const resultadoCalculo = document.getElementById("resultadoCalculo");
+
+    // Recupera dados salvos anteriormente no navegador, se existirem
+    const ultimaEconomia = localStorage.getItem("ultimaEconomia");
+    if (ultimaEconomia) {
+        resultadoCalculo.style.color = "#2e7d32";
+        resultadoCalculo.style.backgroundColor = "#e8f5e9";
+        resultadoCalculo.textContent = `Recuperado do histórico: Sua última simulação calculou ${ultimaEconomia} litros/mês.`;
+    }
 
     btnCalcular.addEventListener("click", () => {
         const litrosDiarios = parseFloat(inputLitros.value);
 
         if (isNaN(litrosDiarios) || litrosDiarios < 0) {
-            resultadoCalculo.style.color = "red";
-            resultadoCalculo.textContent = "Por favor, insira um número válido de litros.";
+            exibirMensagem(resultadoCalculo, "⚠️ Por favor, insira um número válido de litros.", "#c0392b", "#fdedec");
         } else {
             const economiaMensal = litrosDiarios * 30;
-            resultadoCalculo.style.color = "var(--verde-principal)";
-            resultadoCalculo.textContent = `Parabéns! Você economiza em média ${economiaMensal} litros de água por mês. 💧`;
+            const mensagem = `💧 Excelente! Você economiza em média ${economiaMensal.toLocaleString('pt-BR')} litros de água por mês.`;
+            
+            exibirMensagem(resultadoCalculo, mensagem, "#1b5e20", "#e8f5e9");
+            // Salva o resultado no LocalStorage
+            localStorage.setItem("ultimaEconomia", economiaMensal.toLocaleString('pt-BR'));
         }
     });
 
-    // --- 2. LÓGICA DO QUIZ SUSTENTÁVEL ---
-    const botoesQuiz = document.querySelectorAll(".btn-opcao");
+    // ==========================================
+    // 2. QUIZ SUSTENTÁVEL (COM BLOQUEIO E EFEITOS)
+    // ==========================================
+    const botoesQuiz = document.querySelectorAll(".btn-quiz");
     const resultadoQuiz = document.getElementById("resultadoQuiz");
+
+    // Verifica se o usuário já respondeu o quiz nesta sessão
+    if (localStorage.getItem("quizRespondido") === "true") {
+        bloquearQuiz();
+        resultadoQuiz.textContent = "Você já respondeu este quiz anteriormente.";
+        resultadoQuiz.style.color = "#7f8c8d";
+    }
 
     botoesQuiz.forEach(botao => {
         botao.addEventListener("click", () => {
             const ehCorreto = botao.getAttribute("data-correta") === "true";
 
-            if (ehCorreto) {
-                resultadoQuiz.style.color = "var(--verde-principal)";
-                resultadoQuiz.textContent = "Resposta Correta! 🎉 Os drones são ótimos aliados no monitoramento.";
-                botao.style.backgroundColor = "#4caf50";
-                botao.style.color = "white";
-            } else {
-                resultadoQuiz.style.color = "red";
-                resultadoQuiz.textContent = "Resposta incorreta. Tente novamente! ❌";
-                botao.style.backgroundColor = "#f44336";
-                botao.style.color = "white";
-            }
+            bloquearQuiz();
+            localStorage.setItem("quizRespondido", "true");
 
-            // Desabilita os botões após a resposta para evitar cliques múltiplos
-            botoesQuiz.forEach(b => b.disabled = true);
+            if (ehCorreto) {
+                botao.style.transform = "scale(1.05)";
+                exibirMensagem(resultadoQuiz, "🎉 Resposta Correta! Os Drones Agrícolas monitoram com alta precisão.", "#1b5e20", "#e8f5e9");
+            } else {
+                botao.style.backgroundColor = "#e74c3c";
+                botao.style.borderColor = "#c0392b";
+                botao.style.color = "white";
+                exibirMensagem(resultadoQuiz, "❌ Resposta Incorreta! A resposta certa era Drones Agrícolas.", "#c0392b", "#fdedec");
+            }
         });
     });
 
-    // --- 3. LÓGICA DO FORMULÁRIO DE CONTATO ---
+    function bloquearQuiz() {
+        botoesQuiz.forEach(b => {
+            b.disabled = true;
+            b.style.cursor = "not-allowed";
+            if (b.getAttribute("data-correta") === "true") {
+                b.style.backgroundColor = "#4caf50";
+                b.style.borderColor = "#2e7d32";
+                b.style.color = "white";
+            }
+        });
+    }
+
+    // ==========================================
+    // 3. ENVIO DE E-MAIL REAL E VALIDAÇÃO COMPLEXA
+    // ==========================================
     const formContato = document.getElementById("formContato");
     const resultadoForm = document.getElementById("resultadoForm");
 
-    formContato.addEventListener("submit", (event) => {
-        event.preventDefault(); // Evita que a página recarregue ao enviar
+    formContato.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Evita recarregar a página
 
-        const nome = document.getElementById("nome").value;
-        const email = document.getElementById("email").value;
+        const nome = document.getElementById("nome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
 
-        // Simulação de envio com sucesso
-        resultadoForm.style.color = "var(--verde-principal)";
-        resultadoForm.textContent = `Obrigado pelo contato, ${nome}! Sua mensagem foi enviada com sucesso para o email informado (${email}).`;
+        // Validação complexa via Regex para o e-mail
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            exibirMensagem(resultadoForm, "❌ Formato de e-mail inválido.", "#c0392b", "#fdedec");
+            return;
+        }
 
-        // Limpa o formulário
-        formContato.reset();
+        if (mensagem.length < 10) {
+            exibirMensagem(resultadoForm, "⚠️ A mensagem deve conter pelo menos 10 caracteres.", "#c0392b", "#fdedec");
+            return;
+        }
+
+        // Alterar estado do botão para indicar carregamento
+        const botaoSubmit = formContato.querySelector("button[type='submit']");
+        const textoOriginalBotao = botaoSubmit.textContent;
+        botaoSubmit.textContent = "Enviando...";
+        botaoSubmit.disabled = true;
+
+        try {
+            // Requisição assíncrona (Fetch API) enviando para o endpoint do FormSubmit direcionado ao seu e-mail
+            const response = await fetch("https://formsubmit.co/ajax/heloisa.gavronski@escola.pr.gov.br", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Nome: nome,
+                    Email: email,
+                    Mensagem: mensagem,
+                    _subject: "Nova Mensagem - Família Folha Curitiba"
+                })
+            });
+
+            if (response.ok) {
+                exibirMensagem(resultadoForm, `✉️ Obrigado, ${nome}! Sua mensagem foi enviada com sucesso para heloisa.gavronski@escola.pr.gov.br`, "#1b5e20", "#e8f5e9");
+                formContato.reset();
+            } else {
+                throw new Error("Erro no servidor");
+            }
+
+        } catch (error) {
+            exibirMensagem(resultadoForm, "❌ Houve um erro ao tentar enviar o e-mail. Tente novamente mais tarde.", "#c0392b", "#fdedec");
+        } finally {
+            // Restaura o estado original do botão
+            botaoSubmit.textContent = textoOriginalBotao;
+            botaoSubmit.disabled = false;
+        }
     });
+
+    // Função utilitária para aplicar feedbacks visuais estruturados
+    function exibirMensagem(elemento, texto, corTexto, corFundo) {
+        elemento.textContent = texto;
+        elemento.style.color = corTexto;
+        elemento.style.backgroundColor = corFundo;
+        elemento.style.opacity = 0;
+        elemento.style.transition = "opacity 0.4s ease";
+        
+        setTimeout(() => {
+            elemento.style.opacity = 1;
+        }, 50);
+    }
 });
