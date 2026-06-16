@@ -1,0 +1,64 @@
+// Aguarda o HTML carregar completamente
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 1. LÓGICA DA CALCULADORA SUSTENTÁVEL ---
+    const btnCalcular = document.getElementById("btnCalcular");
+    const inputLitros = document.getElementById("litrosAgua");
+    const resultadoCalculo = document.getElementById("resultadoCalculo");
+
+    btnCalcular.addEventListener("click", () => {
+        const litrosDiarios = parseFloat(inputLitros.value);
+
+        if (isNaN(litrosDiarios) || litrosDiarios < 0) {
+            resultadoCalculo.style.color = "red";
+            resultadoCalculo.textContent = "Por favor, insira um número válido de litros.";
+        } else {
+            const economiaMensal = litrosDiarios * 30;
+            resultadoCalculo.style.color = "var(--verde-principal)";
+            resultadoCalculo.textContent = `Parabéns! Você economiza em média ${economiaMensal} litros de água por mês. 💧`;
+        }
+    });
+
+    // --- 2. LÓGICA DO QUIZ SUSTENTÁVEL ---
+    const botoesQuiz = document.querySelectorAll(".btn-opcao");
+    const resultadoQuiz = document.getElementById("resultadoQuiz");
+
+    botoesQuiz.forEach(botao => {
+        botao.addEventListener("click", () => {
+            const ehCorreto = botao.getAttribute("data-correta") === "true";
+
+            if (ehCorreto) {
+                resultadoQuiz.style.color = "var(--verde-principal)";
+                resultadoQuiz.textContent = "Resposta Correta! 🎉 Os drones são ótimos aliados no monitoramento.";
+                botao.style.backgroundColor = "#4caf50";
+                botao.style.color = "white";
+            } else {
+                resultadoQuiz.style.color = "red";
+                resultadoQuiz.textContent = "Resposta incorreta. Tente novamente! ❌";
+                botao.style.backgroundColor = "#f44336";
+                botao.style.color = "white";
+            }
+
+            // Desabilita os botões após a resposta para evitar cliques múltiplos
+            botoesQuiz.forEach(b => b.disabled = true);
+        });
+    });
+
+    // --- 3. LÓGICA DO FORMULÁRIO DE CONTATO ---
+    const formContato = document.getElementById("formContato");
+    const resultadoForm = document.getElementById("resultadoForm");
+
+    formContato.addEventListener("submit", (event) => {
+        event.preventDefault(); // Evita que a página recarregue ao enviar
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+
+        // Simulação de envio com sucesso
+        resultadoForm.style.color = "var(--verde-principal)";
+        resultadoForm.textContent = `Obrigado pelo contato, ${nome}! Sua mensagem foi enviada com sucesso para o email informado (${email}).`;
+
+        // Limpa o formulário
+        formContato.reset();
+    });
+});
