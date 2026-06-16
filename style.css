@@ -162,4 +162,64 @@ ul {
     h2 {
         font-size: 1.5rem;
     }
+    /* Novos Estilos para Interatividade */
+.card-interativo {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.form-grupo {
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    background-color: var(--verde-principal);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: var(--verde-secundario);
+}
+
+.opcoes-quiz {
+    list-style: none;
+    padding: 15px !important;
+}
+
+.btn-opcao {
+    width: 100%;
+    text-align: left;
+    background-color: #f0f0f0;
+    color: var(--texto);
+    margin: 5px 0;
+}
+
+.btn-opcao:hover {
+    background-color: #e0e0e0;
+}
+
+.resultado {
+    margin-top: 15px;
+    font-weight: 600;
+}
 }
