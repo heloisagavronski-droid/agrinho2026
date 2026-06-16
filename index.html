@@ -56,40 +56,45 @@
     </p>
 
     <h2>Calculadora Sustentável</h2>
-
-    <p>
-        O usuário informa quantos litros de água economiza por dia e o sistema calcula
-        a economia mensal.
-    </p>
+    <p>O usuário informa quantos litros de água economiza por dia e o sistema calcula a economia mensal.</p>
+<div class="card-interativo">
+    <label for="litrosAgua">Litros economizados por dia:</label>
+    <input type="number" id="litrosAgua" placeholder="Ex: 50" min="0">
+    <button id="btnCalcular">Calcular Economia</button>
+    <p id="resultadoCalculo" class="resultado"></p>
+</div>
 
     <h2>Quiz Sustentável</h2>
+<p><strong>Pergunta:</strong> Qual tecnologia ajuda no monitoramento das plantações?</p>
 
-    <p><strong>Pergunta:</strong> Qual tecnologia ajuda no monitoramento das plantações?</p>
-
-    <ul>
-        <li>Queimadas</li>
-        <li>Drones Agrícolas</li>
-        <li>Desmatamento</li>
-    </ul>
-
-    <p><strong>Resposta correta:</strong> Drones Agrícolas.</p>
+<ul class="opcoes-quiz">
+    <li><button class="btn-opcao" data-correta="false">Queimadas</button></li>
+    <li><button class="btn-opcao" data-correta="true">Drones Agrícolas</button></li>
+    <li><button class="btn-opcao" data-correta="false">Desmatamento</button></li>
+</ul>
+<p id="resultadoQuiz" class="resultado"></p>
 
     <h2>Contato</h2>
-
-    <p>Nome:</p>
-    <p>Email:</p>
-    <p>Mensagem:</p>
-
-    <h2>Conclusão</h2>
-
-    <p>
-        O crescimento do agronegócio pode acontecer de forma sustentável por meio da
-        tecnologia, da inovação e da preservação ambiental.
-    </p>
-
+<form id="formContato" class="card-interativo">
+    <div class="form-grupo">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required placeholder="Seu nome">
+    </div>
+    <div class="form-grupo">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+    </div>
+    <div class="form-grupo">
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" required placeholder="Sua mensagem aqui..."></textarea>
+    </div>
+    <button type="submit">Enviar Mensagem</button>
+    <p id="resultadoForm" class="resultado"></p>
+</form>
     <hr>
 
     <p>© 2026 Família Folha Curitiba – Agro Sustentável</p>
 
+    <script src="script.js"></script>
 </body>
 </html>
