@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
+    --verde-escuro: #1b5e20;
     --verde-principal: #2e7d32;
     --verde-secundario: #4caf50;
     --verde-claro: #e8f5e9;
     --dourado: #c8a24d;
-    --texto: #333;
+    --texto: #2c3e50;
     --branco: #ffffff;
-    --fundo: #f7faf7;
+    --fundo: #f4f9f4;
+    --sombra: rgba(46, 125, 50, 0.08);
 }
 
 * {
@@ -19,207 +21,247 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(
-        135deg,
-        #f7faf7,
-        #eef8ee
-    );
+    background: linear-gradient(135deg, var(--fundo), #eef8ee);
     color: var(--texto);
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
-    padding: 40px 25px;
-    line-height: 1.8;
+    padding: 40px 20px;
+    line-height: 1.6;
 }
 
-/* Cabeçalho principal */
-h1 {
+/* Cabeçalho */
+header {
     text-align: center;
-    font-size: 3rem;
-    color: var(--verde-principal);
-    margin-bottom: 10px;
-    position: relative;
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 3.2rem;
+    color: var(--verde-escuro);
+    font-weight: 700;
 }
 
 h1::after {
     content: "";
     display: block;
-    width: 120px;
-    height: 4px;
+    width: 150px;
+    height: 5px;
     background: var(--dourado);
     margin: 15px auto;
     border-radius: 10px;
 }
 
-/* Títulos de seção */
+header h2 {
+    border-left: none;
+    padding-left: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--verde-secundario);
+    font-weight: 400;
+    margin-top: 0;
+}
+
+.subtitulo-principal {
+    max-width: 800px;
+    margin: 20px auto 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Títulos das Seções */
 h2 {
     margin-top: 40px;
-    margin-bottom: 15px;
-    color: var(--verde-principal);
-    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--verde-escuro);
+    font-size: 2rem;
     border-left: 6px solid var(--verde-secundario);
     padding-left: 15px;
 }
 
-/* Subtítulos */
 h3 {
-    margin-top: 25px;
+    color: var(--verde-escuro);
+    font-size: 1.25rem;
     margin-bottom: 10px;
-    color: #1b5e20;
-    font-size: 1.2rem;
 }
 
-/* Parágrafos */
-p {
-    margin-bottom: 15px;
+/* Grids de Organização */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.grid-interativo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Cards de Conteúdo Estilizados */
+.card {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--sombra);
+    border: 1px solid rgba(46, 125, 50, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+}
+
+/* Painéis Interativos (Calculadora, Quiz, Contato) */
+.card-painel {
+    background: var(--branco);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--sombra);
+    border: 1px solid rgba(46, 125, 50, 0.05);
+}
+
+.card-painel h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    border-left: 4px solid var(--dourado);
+}
+
+/* Elementos de Formulário */
+.formulario-grupo {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: 500;
+    color: var(--verde-escuro);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    transition: border-color 0.3s;
 }
 
-/* Cards modernos para conteúdos */
-h3 + p {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
-    padding: 18px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    border: 1px solid rgba(255,255,255,0.5);
-    transition: 0.3s ease;
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--verde-secundario);
 }
 
-h3 + p:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(46,125,50,0.15);
-}
-
-/* Lista do quiz */
-ul {
-    background: white;
-    padding: 20px 35px;
-    border-radius: 15px;
-    margin: 15px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-li {
-    margin: 10px 0;
-}
-
-/* Destaques */
-strong {
-    color: var(--verde-principal);
-}
-
-/* Separador */
-hr {
-    margin: 50px 0 20px;
+/* Botões Modernos */
+.btn-principal {
+    background: var(--verde-principal);
+    color: var(--branco);
     border: none;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--verde-principal),
-        transparent
-    );
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    margin-top: 10px;
+    width: 100%;
 }
 
-/* Rodapé */
-body > p:last-child {
-    text-align: center;
-    color: #666;
-    font-size: 0.95rem;
+.btn-principal:hover {
+    background: var(--verde-escuro);
+}
+
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* Botões do Quiz estilo lista */
+.opcoes-quiz {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 20px;
 }
 
-/* Efeito para seções */
-h2,
-h3,
-p,
-ul {
-    animation: fadeIn 0.8s ease;
+.btn-quiz {
+    background: #f8faf8;
+    color: var(--texto);
+    border: 2px solid #e2e8f0;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
 }
 
-@keyframes fadeIn {
+.btn-quiz:hover {
+    background: var(--verde-claro);
+    border-color: var(--verde-secundario);
+    transform: translateX(5px);
+}
+
+/* Classes utilitárias do JavaScript */
+.mensagem-resultado {
+    margin-top: 20px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Conclusão */
+.conclusao-secao p {
+    background: var(--verde-claro);
+    color: var(--verde-escuro);
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    border-left: 5px solid var(--verde-principal);
+}
+
+/* Rodapé */
+hr {
+    margin: 60px 0 20px;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--verde-principal), transparent);
+}
+
+footer p {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Animações de Entrada */
+h2, .card, .card-painel {
+    animation: surgimento 0.6s ease forwards;
+}
+
+@keyframes surgimento {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Responsividade */
+/* Responsividade Avançada */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 2.2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-    /* Novos Estilos para Interatividade */
-.card-interativo {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-}
-
-.form-grupo {
-    margin-bottom: 15px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-}
-
-button {
-    background-color: var(--verde-principal);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: var(--verde-secundario);
-}
-
-.opcoes-quiz {
-    list-style: none;
-    padding: 15px !important;
-}
-
-.btn-opcao {
-    width: 100%;
-    text-align: left;
-    background-color: #f0f0f0;
-    color: var(--texto);
-    margin: 5px 0;
-}
-
-.btn-opcao:hover {
-    background-color: #e0e0e0;
-}
-
-.resultado {
-    margin-top: 15px;
-    font-weight: 600;
-}
+    body { padding: 20px 15px; }
+    h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.6rem; }
+    .grid-interativo { grid-template-columns: 1fr; }
 }
