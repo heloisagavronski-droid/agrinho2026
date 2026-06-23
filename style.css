@@ -243,7 +243,7 @@ footer p {
 }
 
 /* Animações de Entrada */
-h2, .card, .card-painel {
+h2, .card, .card-painel, .secao-futuro {
     animation: surgimento 0.6s ease forwards;
 }
 
@@ -264,4 +264,45 @@ h2, .card, .card-painel {
     h1 { font-size: 2.3rem; }
     h2 { font-size: 1.6rem; }
     .grid-interativo { grid-template-columns: 1fr; }
+    .wrapper-fotos { flex-direction: column; }
+}
+
+/* ==========================================
+   ESTILOS NOVOS DA GALERIA DO FUTURO
+   ========================================== */
+.secao-futuro {
+    margin-top: 30px;
+}
+
+.container-fotos-futuro {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--sombra);
+    border: 1px solid rgba(46, 125, 50, 0.05);
+    text-align: center;
+}
+
+.wrapper-fotos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.foto-futuro-item {
+    max-width: 100%;
+    width: 48%; /* Exibe as duas lado a lado */
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.legenda-futuro {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--verde-escuro);
+    margin-top: 10px;
+    font-style: italic;
 }
