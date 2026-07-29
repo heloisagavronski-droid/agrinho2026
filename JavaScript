@@ -1,38 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
     // 1. CALCULADORA SUSTENTÁVEL
-    // ==========================================
     const btnCalcular = document.getElementById('btnCalcular');
     const inputLitros = document.getElementById('litrosAgua');
     const resultadoCalculo = document.getElementById('resultadoCalculo');
 
-    btnCalcular.addEventListener('click', () => {
-        const litrosDiarios = parseFloat(inputLitros.value);
+    if (btnCalcular) {
+        btnCalcular.addEventListener('click', () => {
+            const litrosDiarios = Number(inputLitros.value);
 
-        if (isNaN(litrosDiarios) || litrosDiarios <= 0) {
-            exibirMensagem(resultadoCalculo, 'Por favor, insira um número válido maior que zero.', 'erro');
-            return;
-        }
+            if (!litrosDiarios || litrosDiarios <= 0) {
+                mostrarMensagem(resultadoCalculo, 'Por favor, digite um número maior que 0!', 'erro');
+                return;
+            }
 
-        const economiaMensal = litrosDiarios * 30;
-        const economiaAnual = litrosDiarios * 365;
+            const mensal = (litrosDiarios * 30).toLocaleString('pt-BR');
+            const anual = (litrosDiarios * 365).toLocaleString('pt-BR');
 
-        const mensagem = `Excelente! Em um mês você economiza <strong>${economiaMensal.toLocaleString('pt-BR')} litros</strong> e em um ano <strong>${economiaAnual.toLocaleString('pt-BR')} litros</strong> de água! 💧`;
-        exibirMensagem(resultadoCalculo, mensagem, 'sucesso');
-    });
+            mostrarMensagem(
+                resultadoCalculo, 
+                `Com ${litrosDiarios}L por dia, você economiza aproximadamente <strong>${mensal} litros/mês</strong> e <strong>${anual} litros/ano</strong>! 💧`, 
+                'sucesso'
+            );
+        });
+    }
 
-    // ==========================================
     // 2. QUIZ SUSTENTÁVEL
-    // ==========================================
     const botoesQuiz = document.querySelectorAll('.btn-quiz');
     const resultadoQuiz = document.getElementById('resultadoQuiz');
 
     botoesQuiz.forEach(botao => {
-        botao.addEventListener('click', (e) => {
-            const eCorreta = e.target.getAttribute('data-correta') === 'true';
+        botao.addEventListener('click', (evento) => {
+            const botaoClicado = evento.currentTarget;
+            const eCorreta = botaoClicado.getAttribute('data-correta') === 'true';
 
-            // Desabilita todos os botões após a primeira resposta
+            // Desativa todos os botões após a escolha
             botoesQuiz.forEach(b => {
                 b.disabled = true;
                 if (b.getAttribute('data-correta') === 'true') {
@@ -41,44 +43,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (eCorreta) {
-                exibirMensagem(resultadoQuiz, 'Resposta Correta! Os Drones Agrícolas ajudam a monitorar lavouras com precisão. 🌱', 'sucesso');
+                mostrarMensagem(resultadoQuiz, 'Resposta Correta! Os Drones Agrícolas ajudam a monitorar as lavouras. 🛸🌱', 'sucesso');
             } else {
-                e.target.classList.add('incorreta');
-                exibirMensagem(resultadoQuiz, 'Resposta Incorreta! A resposta correta era "Drones Agrícolas". ❌', 'erro');
+                botaoClicado.classList.add('incorreta');
+                mostrarMensagem(resultadoQuiz, 'Ops, resposta errada! A opção correta é "Drones Agrícolas". ❌', 'erro');
             }
         });
     });
 
-    // ==========================================
     // 3. FORMULÁRIO DE CONTATO
-    // ==========================================
     const formContato = document.getElementById('formContato');
     const resultadoForm = document.getElementById('resultadoForm');
 
-    formContato.addEventListener('submit', (e) => {
-        e.preventDefault(); // Impede o recarregamento padrão da página
+    if (formContato) {
+        formContato.addEventListener('submit', (evento) => {
+            evento.preventDefault(); // Não recarrega a página
 
-        const nome = document.getElementById('nome').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const mensagem = document.getElementById('mensagem').value.trim();
+            const nome = document.getElementById('nome').value.trim();
 
-        if (nome === '' || email === '' || mensagem === '') {
-            exibirMensagem(resultadoForm, 'Por favor, preencha todos os campos.', 'erro');
-            return;
+            mostrarMensagem(
+                resultadoForm, 
+                `Obrigado pelo contato, <strong>${nome}</strong>! Sua mensagem foi enviada com sucesso. 🚀`, 
+                'sucesso'
+            );
+
+            formContato.reset();
+        });
+    }
+
+    // Função para exibir as mensagens na tela
+    function mostrarMensagem(elemento, texto, tipo) {
+        if (elemento) {
+            elemento.innerHTML = texto;
+            elemento.className = `mensagem-resultado ${tipo}`;
         }
-
-        // Simulação de envio bem-sucedido
-        exibirMensagem(resultadoForm, `Obrigado, ${nome}! Sua mensagem foi enviada com sucesso. Entraremos em contato em breve. 🚀`, 'sucesso');
-
-        // Limpa os campos do formulário
-        formContato.reset();
-    });
-
-    // ==========================================
-    // FUNÇÃO AUXILIAR DE MENSAGENS
-    // ==========================================
-    function exibirMensagem(elemento, texto, tipo) {
-        elemento.innerHTML = texto;
-        elemento.className = `mensagem-resultado ${tipo}`;
     }
 });
