@@ -1,18 +1,4 @@
-/* Importando fonte moderna */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-:root {
-    --verde-escuro: #1b5e20;
-    --verde-principal: #2e7d32;
-    --verde-secundario: #4caf50;
-    --verde-claro: #e8f5e9;
-    --dourado: #c8a24d;
-    --texto: #2c3e50;
-    --branco: #ffffff;
-    --fundo: #f4f9f4;
-    --sombra: rgba(46, 125, 50, 0.08);
-}
-
+/* Reset básico e tipografia */
 * {
     margin: 0;
     padding: 0;
@@ -20,289 +6,159 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--fundo), #eef8ee);
-    color: var(--texto);
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f4;
+    color: #2c3e50;
     line-height: 1.6;
 }
 
-/* Cabeçalho */
-header {
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header-principal {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: #ffffff;
+    padding: 60px 0 40px;
     text-align: center;
-    margin-bottom: 50px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-h1 {
-    font-size: 3.2rem;
-    color: var(--verde-escuro);
-    font-weight: 700;
+.header-principal h1 {
+    font-size: 2.8rem;
+    margin-bottom: 5px;
 }
 
-h1::after {
-    content: "";
-    display: block;
-    width: 150px;
-    height: 5px;
-    background: var(--dourado);
-    margin: 15px auto;
-    border-radius: 10px;
-}
-
-header h2 {
-    border-left: none;
-    padding-left: 0;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--verde-secundario);
-    font-weight: 400;
-    margin-top: 0;
+.header-principal h2 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #a5d6a7;
+    margin-bottom: 20px;
 }
 
 .subtitulo-principal {
     max-width: 800px;
-    margin: 20px auto 0;
-    font-size: 1.1rem;
-    color: #555;
+    margin: 0 auto;
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
-/* Títulos das Seções */
-h2 {
-    margin-top: 40px;
+/* Seções gerais */
+.secao {
+    margin: 40px 0;
+}
+
+.titulo-secao {
+    font-size: 1.8rem;
+    color: #1b5e20;
     margin-bottom: 20px;
-    color: var(--verde-escuro);
-    font-size: 2rem;
-    border-left: 6px solid var(--verde-secundario);
-    padding-left: 15px;
+    border-left: 5px solid #4caf50;
+    padding-left: 10px;
 }
 
-h3 {
-    color: var(--verde-escuro);
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-}
-
-/* Grids de Organização */
+/* Layout Grid para os cards */
 .grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    margin-bottom: 20px;
 }
 
-.grid-interativo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-/* Cards de Conteúdo Estilizados */
 .card {
-    background: var(--branco);
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px var(--sombra);
-    border: 1px solid rgba(46, 125, 50, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Painéis Interativos (Calculadora, Quiz, Contato) */
+.card h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+/* Painéis Interativos */
+.grid-interativo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
 .card-painel {
-    background: var(--branco);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px var(--sombra);
-    border: 1px solid rgba(46, 125, 50, 0.05);
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid #4caf50;
 }
 
 .card-painel h2 {
-    margin-top: 0;
-    font-size: 1.6rem;
-    border-left: 4px solid var(--dourado);
+    color: #1b5e20;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
 }
 
-/* Elementos de Formulário */
+/* Formulários e Inputs */
 .formulario-grupo {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin: 15px 0;
 }
 
 label {
-    font-weight: 500;
-    color: var(--verde-escuro);
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 input, textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
 input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--verde-secundario);
+    border-color: #2e7d32;
 }
 
-/* Botões Modernos */
+/* Botões */
 .btn-principal {
-    background: var(--verde-principal);
-    color: var(--branco);
+    background-color: #2e7d32;
+    color: #ffffff;
     border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
+    padding: 12px 20px;
+    border-radius: 6px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s, transform 0.1s;
-    margin-top: 10px;
-    width: 100%;
+    transition: background-color 0.2s ease;
 }
 
 .btn-principal:hover {
-    background: var(--verde-escuro);
+    background-color: #1b5e20;
 }
 
-.btn-principal:active {
-    transform: scale(0.98);
-}
-
-/* Botões do Quiz estilo lista */
+/* Quiz */
 .opcoes-quiz {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 10px;
+    margin: 15px 0;
 }
 
 .btn-quiz {
-    background: #f8faf8;
-    color: var(--texto);
-    border: 2px solid #e2e8f0;
-    padding: 14px 20px;
-    border-radius: 12px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 500;
-}
-
-.btn-quiz:hover {
-    background: var(--verde-claro);
-    border-color: var(--verde-secundario);
-    transform: translateX(5px);
-}
-
-/* Classes utilitárias do JavaScript */
-.mensagem-resultado {
-    margin-top: 20px;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Conclusão */
-.conclusao-secao p {
-    background: var(--verde-claro);
-    color: var(--verde-escuro);
-    padding: 20px;
-    border-radius: 12px;
-    font-weight: 500;
-    border-left: 5px solid var(--verde-principal);
-}
-
-/* Rodapé */
-hr {
-    margin: 60px 0 20px;
-    border: none;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--verde-principal), transparent);
-}
-
-footer p {
-    text-align: center;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
-
-/* Animações de Entrada */
-h2, .card, .card-painel, .secao-futuro {
-    animation: surgimento 0.6s ease forwards;
-}
-
-@keyframes surgimento {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsividade Avançada */
-@media (max-width: 768px) {
-    body { padding: 20px 15px; }
-    h1 { font-size: 2.3rem; }
-    h2 { font-size: 1.6rem; }
-    .grid-interativo { grid-template-columns: 1fr; }
-    .wrapper-fotos { flex-direction: column; }
-}
-
-/* ==========================================
-   ESTILOS NOVOS DA GALERIA DO FUTURO
-   ========================================== */
-.secao-futuro {
-    margin-top: 30px;
-}
-
-.container-fotos-futuro {
-    background: var(--branco);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px var(--sombra);
-    border: 1px solid rgba(46, 125, 50, 0.05);
-    text-align: center;
-}
-
-.wrapper-fotos {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.foto-futuro-item {
-    max-width: 100%;
-    width: 48%; /* Exibe as duas lado a lado */
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.legenda-futuro {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--verde-escuro);
-    margin-top: 10px;
-    font-style: italic;
-}
+    background-color: #e8f5e9;
+    color: #2e7d
