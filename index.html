@@ -3,124 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Família Folha Curitiba</title>
+    <title>Família Folha Curitiba - Agro Sustentável</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CSS INTEGRADO === */
+        :root {
+            --primary-color: #2e7d32; /* Verde Folha */
+            --primary-dark: #1b5e20;
+            --secondary-color: #a5d6a7;
+            --bg-color: #f4f7f4;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --error-color: #d32f2f;
+            --success-bg: #e8f5e9;
+            --error-bg: #ffebee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #ffffff;
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 { font-size: 2.8rem; margin-bottom: 5px; }
+        header h2 { font-size: 1.4rem; font-weight: 300; color: var(--secondary-color); margin-bottom: 20px; }
+        .subtitulo-principal { max-width: 800px; margin: 0 auto; font-size: 1rem; opacity: 0.9; }
+
+        /* Seções e Cards */
+        section { margin-bottom: 40px; }
+        h2.titulo-secao { font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 20px; border-left: 5px solid #4caf50; padding-left: 10px; }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary-color); margin-bottom: 10px; }
+
+        /* Painéis Interativos */
+        .grid-interativo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card-painel {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 4px solid #4caf50;
+        }
+
+        .card-painel h2 { color: var(--primary-dark); margin-bottom: 15px; font-size: 1.5rem; }
+
+        /* Formulários e Botões */
+        .formulario-grupo { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+        label { font-weight: 600; font-size: 0.9rem; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+        input:focus, textarea:focus { outline: 2px solid var(--primary-color); border-color: transparent; }
+
+        .btn-principal {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .btn-principal:hover { background-color: var(--primary-dark); }
+
+        /* Quiz */
+        .opcoes-quiz { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+
+        .btn-quiz {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            border: 1px solid #c8e6c9;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-quiz:hover:not(:disabled) { background-color: #c8e6c9; }
+
+        /* Estados do Quiz (JavaScript vai usar isso) */
+        .btn-quiz.correta {
+            background-color: var(--primary-color) !important;
+            color: #ffffff !important;
+            border-color: var(--primary-dark) !important;
+        }
+
+        .btn-quiz.incorreta {
+            background-color: var(--error-color) !important;
+            color: #ffffff !important;
+            border-color: #b71c1c !important;
+        }
+
+        .btn-quiz:disabled { cursor: not-serif; opacity: 0.8; }
+
+        /* Mensagens de Feedback */
+        .mensagem-resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none; /* Escondido por padrão */
+            border: 1px solid transparent;
+        }
+
+        /* Galeria */
+        .container-fotos-futuro { text-align: center; }
+        .wrapper-fotos {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .foto-futuro-item {
+            width: 100%;
+            max-width: 450px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border: 4px solid #fff;
+        }
+
+        .legenda-futuro { font-style: italic; color: #555; font-size: 1.1rem; }
+
+        /* Rodapé */
+        footer { text-align: center; padding: 40px 0; color: #777; margin-top: 20px; }
+        footer hr { border: none; border-top: 1px solid #ddd; margin-bottom: 20px; }
+
+        /* Responsividade Básica */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .foto-futuro-item { height: 200px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header-principal">
+    <header>
         <div class="container">
             <h1>Família Folha Curitiba</h1>
             <h2>Agro forte, futuro sustentável</h2>
             <p class="subtitulo-principal">
-                O agronegócio é uma atividade importante para a economia, pois produz alimentos,
-                gera empregos e contribui para o desenvolvimento do país. No entanto, é necessário
-                que esse crescimento aconteça de forma responsável, respeitando os recursos naturais.
+                Produzindo alimentos de forma responsável, respeitando os recursos naturais para garantir o futuro das próximas gerações.
             </p>
         </div>
     </header>
 
     <main class="container">
-        <section class="secao">
-            <h2 class="titulo-secao">Produção Agrícola</h2>
-            <div class="grid-cards">
-                <div class="card">
-                    <h3>Agricultura de Precisão</h3>
-                    <p>A agricultura de precisão utiliza tecnologias como GPS e sensores para acompanhar o desenvolvimento das plantações.</p>
-                </div>
-                <div class="card">
-                    <h3>Drones Agrícolas</h3>
-                    <p>Os drones auxiliam no monitoramento das lavouras, identificando problemas e facilitando o controle das plantações.</p>
-                </div>
-                <div class="card">
-                    <h3>Energia Renovável</h3>
-                    <p>A utilização de energia solar ajuda a reduzir os impactos ambientais e promove uma produção mais sustentável.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="secao">
-            <h2 class="titulo-secao">Sustentabilidade</h2>
-            <div class="grid-cards">
-                <div class="card">
-                    <h3>Conservação do Solo</h3>
-                    <p>A conservação do solo evita erosões e preserva os nutrientes necessários para a produção agrícola.</p>
-                </div>
-                <div class="card">
-                    <h3>Irrigação Inteligente</h3>
-                    <p>Sistemas inteligentes ajudam a economizar água e melhorar a eficiência da irrigação.</p>
-                </div>
-                <div class="card">
-                    <h3>Redução de Carbono</h3>
-                    <p>O uso de tecnologias sustentáveis contribui para diminuir os impactos ambientais.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="secao grid-interativo">
+        <section class="grid-interativo">
             <div class="card-painel">
                 <h2>Calculadora Sustentável</h2>
-                <p>Informe quantos litros de água você economiza por dia para ver o impacto mensal e anual.</p>
+                <p>Descubra o impacto mensal e anual da sua economia diária de água.</p>
                 
                 <div class="formulario-grupo">
                     <label for="litrosAgua">Litros economizados por dia:</label>
                     <input type="number" id="litrosAgua" placeholder="Ex: 50" min="0">
-                    <button id="btnCalcular" type="button" class="btn-principal">Calcular Economia</button>
                 </div>
+                <button id="btnCalcular" class="btn-principal">Calcular Impacto</button>
+                
                 <div id="resultadoCalculo" class="mensagem-resultado"></div>
             </div>
 
             <div class="card-painel">
                 <h2>Quiz Sustentável</h2>
-                <p><strong>Pergunta:</strong> Qual tecnologia ajuda no monitoramento das plantações?</p>
+                <p><strong>Pergunta:</strong> Qual tecnologia é usada para monitorar a saúde das plantações e aplicar insumos na dose certa?</p>
                 
                 <div class="opcoes-quiz">
-                    <button type="button" class="btn-quiz" data-correta="false">Queimadas</button>
-                    <button type="button" class="btn-quiz" data-correta="true">Drones Agrícolas</button>
-                    <button type="button" class="btn-quiz" data-correta="false">Desmatamento</button>
+                    <button class="btn-quiz" data-correta="false">A) Queimadas controladas</button>
+                    <button class="btn-quiz" data-correta="true">B) Drones e Sensores Agrícolas</button>
+                    <button class="btn-quiz" data-correta="false">C) Tratores antigos</button>
                 </div>
+                
                 <div id="resultadoQuiz" class="mensagem-resultado"></div>
             </div>
         </section>
 
-        <section class="secao">
-            <div class="card-painel contato-container">
-                <h2>Contato</h2>
-                <form id="formContato">
-                    <div class="formulario-grupo">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" required placeholder="Digite seu nome">
-                    </div>
-                    <div class="formulario-grupo">
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" required placeholder="seu@email.com">
-                    </div>
-                    <div class="formulario-grupo">
-                        <label for="mensagem">Mensagem:</label>
-                        <textarea id="mensagem" required placeholder="Como podemos ajudar?" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn-principal">Enviar Mensagem</button>
-                </form>
-                <div id="resultadoForm" class="mensagem-resultado"></div>
-            </div>
-        </section>
-
-        <section class="secao conclusao-secao">
-            <h2>Conclusão</h2>
-            <p>O crescimento do agronegócio pode acontecer de forma sustentável por meio da tecnologia, da inovação e da preservação ambiental.</p>
-        </section>
-
-        <section class="secao secao-futuro">
-            <h2>Galeria do Futuro</h2>
+        <section class="secao-futuro">
+            <h2 class="titulo-secao">Galeria do Futuro: Agroecologia & Tecnologia</h2>
             <figure class="container-fotos-futuro">
                 <div class="wrapper-fotos">
-                    <img src="asset/foto1.jpg" alt="Perspectiva de Futuro Sustentável 1" class="foto-futuro-item" onerror="this.src='https://via.placeholder.com/400x250?text=Futuro+Sustentavel+1'">
-                    <img src="asset/foto2.jpg" alt="Perspectiva de Futuro Sustentável 2" class="foto-futuro-item" onerror="this.src='https://via.placeholder.com/400x250?text=Futuro+Sustentavel+2'">
+                    <img src="foto1.jpg" alt="Drone monitorando plantação sustentável" class="foto-futuro-item">
+                    <img src="foto2.jpg" alt="Agricultura vertical urbana tecnológica" class="foto-futuro-item">
                 </div>
-                <figcaption class="legenda-futuro">Perspectivas para um futuro agroecológico e tecnológico.</figcaption>
+                <figcaption class="legenda-futuro">A tecnologia aliada à preservação ambiental é o caminho para o campo.</figcaption>
             </figure>
         </section>
     </main>
@@ -128,10 +248,91 @@
     <footer>
         <div class="container">
             <hr>
-            <p>© 2026 Família Folha Curitiba – Agro Sustentável</p>
+            <p>© 2026 Família Folha Curitiba – Cultivando um amanhã melhor.</p>
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script>
+        /* === JAVASCRIPT INTEGRADO === */
+        // Garante que o código roda após o HTML carregar
+        window.addEventListener('load', () => {
+
+            // --- 1. LÓGICA DA CALCULADORA ---
+            const btnCalcular = document.getElementById('btnCalcular');
+            const inputLitros = document.getElementById('litrosAgua');
+            const resultadoCalculo = document.getElementById('resultadoCalculo');
+
+            btnCalcular.addEventListener('click', () => {
+                const litrosDiarios = parseFloat(inputLitros.value);
+
+                // Validação: verifica se é um número válido
+                if (isNaN(litrosDiarios) || litrosDiarios < 0) {
+                    exibirResposta(resultadoCalculo, 'Por favor, insira um número válido de litros (0 ou mais).', 'erro');
+                    return;
+                }
+
+                if (litrosDiarios === 0) {
+                    exibirResposta(resultadoCalculo, 'Comece a economizar hoje para ver o impacto positivo!', 'erro');
+                    return;
+                }
+
+                // Cálculos
+                const economiaMensal = (litrosDiarios * 30).toLocaleString('pt-BR');
+                const economiaAnual = (litrosDiarios * 365).toLocaleString('pt-BR');
+
+                // Exibe o resultado
+                const mensagem = `Parabéns! Economizando ${litrosDiarios}L por dia, você preserva <strong>${economiaMensal} litros</strong> em um mês e <strong>${economiaAnual} litros</strong> em um ano! 💧🌍`;
+                exibirResposta(resultadoCalculo, mensagem, 'sucesso');
+            });
+
+
+            // --- 2. LÓGICA DO QUIZ ---
+            const botoesQuiz = document.querySelectorAll('.btn-quiz');
+            const resultadoQuiz = document.getElementById('resultadoQuiz');
+
+            botoesQuiz.forEach(botao => {
+                botao.addEventListener('click', (e) => {
+                    // Pega o botão exato que foi clicado
+                    const botaoClicado = e.currentTarget;
+                    const eCorreta = botaoClicado.getAttribute('data-correta') === 'true';
+
+                    // 1. Desabilita todos os botões para impedir múltiplos cliques
+                    botoesQuiz.forEach(b => {
+                        b.disabled = true;
+                        // Mostra qual era a correta independente da escolha
+                        if (b.getAttribute('data-correta') === 'true') {
+                            b.classList.add('correta');
+                        }
+                    });
+
+                    // 2. Mostra o feedback visual e a mensagem
+                    if (eCorreta) {
+                        exibirResposta(resultadoQuiz, 'Correto! 🎉 Drones e sensores são pilares da agricultura de precisão, aumentando a eficiência e reduzindo o desperdício.', 'sucesso');
+                    } else {
+                        // Destaca a resposta errada que o usuário clicou
+                        botaoClicado.classList.add('incorreta');
+                        exibirResposta(resultadoQuiz, 'Não foi dessa vez. ❌ A resposta correta é a B. Queimadas e equipamentos antigos não são considerados tecnologias sustentáveis modernas.', 'erro');
+                    }
+                });
+            });
+
+
+            // --- FUNÇÃO AUXILIAR PARA MOSTRAR RESPOSTAS ---
+            function exibirResposta(elemento, texto, tipo) {
+                elemento.innerHTML = texto;
+                elemento.style.display = 'block'; // Mostra o elemento
+
+                if (tipo === 'sucesso') {
+                    elemento.style.backgroundColor = '#e8f5e9'; // Fundo Verde claro
+                    elemento.style.color = '#2e7d32'; // Texto Verde escuro
+                    elemento.style.borderColor = '#c8e6c9';
+                } else {
+                    elemento.style.backgroundColor = '#ffebee'; // Fundo Vermelho claro
+                    elemento.style.color = '#c62828'; // Texto Vermelho escuro
+                    elemento.style.borderColor = '#ffcdd2';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
