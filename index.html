@@ -68,9 +68,9 @@
                 <div class="formulario-grupo">
                     <label for="litrosAgua">Litros economizados por dia:</label>
                     <input type="number" id="litrosAgua" placeholder="Ex: 50" min="0">
-                    <button id="btnCalcular" class="btn-principal">Calcular Economia</button>
+                    <button id="btnCalcular" type="button" class="btn-principal">Calcular Economia</button>
                 </div>
-                <p id="resultadoCalculo" class="mensagem-resultado"></p>
+                <div id="resultadoCalculo" class="mensagem-resultado"></div>
             </div>
 
             <div class="card-painel">
@@ -78,11 +78,11 @@
                 <p><strong>Pergunta:</strong> Qual tecnologia ajuda no monitoramento das plantações?</p>
                 
                 <div class="opcoes-quiz">
-                    <button class="btn-quiz" data-correta="false">Queimadas</button>
-                    <button class="btn-quiz" data-correta="true">Drones Agrícolas</button>
-                    <button class="btn-quiz" data-correta="false">Desmatamento</button>
+                    <button type="button" class="btn-quiz" data-correta="false">Queimadas</button>
+                    <button type="button" class="btn-quiz" data-correta="true">Drones Agrícolas</button>
+                    <button type="button" class="btn-quiz" data-correta="false">Desmatamento</button>
                 </div>
-                <p id="resultadoQuiz" class="mensagem-resultado"></p>
+                <div id="resultadoQuiz" class="mensagem-resultado"></div>
             </div>
         </section>
 
@@ -102,3 +102,36 @@
                         <label for="mensagem">Mensagem:</label>
                         <textarea id="mensagem" required placeholder="Como podemos ajudar?" rows="4"></textarea>
                     </div>
+                    <button type="submit" class="btn-principal">Enviar Mensagem</button>
+                </form>
+                <div id="resultadoForm" class="mensagem-resultado"></div>
+            </div>
+        </section>
+
+        <section class="secao conclusao-secao">
+            <h2>Conclusão</h2>
+            <p>O crescimento do agronegócio pode acontecer de forma sustentável por meio da tecnologia, da inovação e da preservação ambiental.</p>
+        </section>
+
+        <section class="secao secao-futuro">
+            <h2>Galeria do Futuro</h2>
+            <figure class="container-fotos-futuro">
+                <div class="wrapper-fotos">
+                    <img src="asset/foto1.jpg" alt="Perspectiva de Futuro Sustentável 1" class="foto-futuro-item" onerror="this.src='https://via.placeholder.com/400x250?text=Futuro+Sustentavel+1'">
+                    <img src="asset/foto2.jpg" alt="Perspectiva de Futuro Sustentável 2" class="foto-futuro-item" onerror="this.src='https://via.placeholder.com/400x250?text=Futuro+Sustentavel+2'">
+                </div>
+                <figcaption class="legenda-futuro">Perspectivas para um futuro agroecológico e tecnológico.</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <hr>
+            <p>© 2026 Família Folha Curitiba – Agro Sustentável</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
